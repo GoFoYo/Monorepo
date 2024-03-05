@@ -1,7 +1,6 @@
 version: "3"
-
 services:
-  ## MQTT for communication
+  # MQTT for communication
   mqtt:
     image: eclipse-mosquitto
     container_name: ayoti_mqtt
@@ -15,22 +14,7 @@ services:
     networks:
       mqtt_network:
 
-  ## AGENT from schema
-  fake_agent:
-    container_name: ayoti_agent
-    build: ./agent
-    depends_on:
-      - mqtt
-    environment:
-      MQTT_BROKER_HOST: "mqtt"
-      MQTT_BROKER_PORT: 1883
-      MQTT_TOPIC: "agent_data_topic"
-      MQTT_PARKING_TOPIC: "parking_data_topic"
-      DELAY: 0.1
-    networks:
-      mqtt_network:
-  
-  ## PG for saving data
+  # PG for storing data
   postgres_db:
     image: postgres:latest
     container_name: ayoti_postgres_db
@@ -39,14 +23,14 @@ services:
       POSTGRES_PASSWORD: pass
       POSTGRES_DB: test_db
     volumes:
-      - "postgres_data:/var/lib/postgresql/data"
-      - "./db/structure.sql:/docker-entrypoint-initdb.d/structure.sql"
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/structure.sql:/docker-entrypoint-initdb.d/structure.sql
     ports:
       - "5432:5432"
     networks:
       db_network:
 
-  # PGADMIN to view postgres with UI
+  # PgAdmin - UI for PG
   pgadmin:
     container_name: ayoti_pgadmin4
     image: dpage/pgadmin4
@@ -60,7 +44,16 @@ services:
     networks:
       db_network:
 
-  # STORE from schema
+  # Redis for hub
+  redis:
+    image: redis:latest
+    container_name: ayoti_redis
+    ports:
+      - "6379:6379"
+    networks:
+      hub_redis:
+
+  # Store from schema
   store:
     container_name: ayoti_store
     build: ./store
@@ -75,18 +68,32 @@ services:
     ports:
       - "8000:8000"
     networks:
+      hub_store:
       db_network:
+      hub:
 
-  ## REDIS for HUB
-  redis:
-    image: redis:latest
-    container_name: ayoti_redis
-    ports:
-      - "6379:6379"
+  # EDGE from schema
+  edge:
+    container_name: ayoti_edge
+    build: ./edge
+    depends_on:
+      - mqtt
+      - hub
+
+    environment:
+      MQTT_BROKER_HOST: "mqtt"
+      MQTT_BROKER_PORT: 1883
+      MQTT_TOPIC: "agent_data_topic"
+      HUB_HOST: "hub"
+      HUB_PORT: 8000
+      HUB_MQTT_BROKER_HOST: "mqtt"
+      HUB_MQTT_BROKER_PORT: 1883
+      HUB_MQTT_TOPIC: "processed_data_topic"
     networks:
-      hub_redis:
+      mqtt_network:
+      edge_hub:
 
-  ## HUB from schema
+  # HUB from schema
   hub:
     container_name: ayoti_hub
     build: ./hub
@@ -97,11 +104,38 @@ services:
     environment:
       STORE_API_HOST: "store"
       STORE_API_PORT: 8000
+      REDIS_HOST: "redis"
+      REDIS_PORT: 6379
+      MQTT_BROKER_HOST: "mqtt"
+      MQTT_BROKER_PORT: 1883
+      MQTT_TOPIC: "processed_data_topic"
+    ports:
+      - "9000:8000"
+    networks:
+      mqtt_network:
+      hub_store:
+      hub_redis:
 
+  # AGENT from schema
+  fake_agent:
+    container_name: ayoti_agent
+    build: ./agent
+    depends_on:
+      - mqtt
+    environment:
+      MQTT_BROKER_HOST: "mqtt"
+      MQTT_BROKER_PORT: 1883
+      MQTT_TOPIC: "agent_data_topic"
+      DELAY: 0.1
+    networks:
+      mqtt_network:
 
 networks:
   mqtt_network:
   db_network:
+  edge_hub:
+  hub:
+  hub_store:
   hub_redis:
 
 volumes:
