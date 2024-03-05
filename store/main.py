@@ -150,9 +150,17 @@ def list_processed_agent_data():
         result = conn.execute(query).fetchall()
         return result
 
-@app.put("/processed_agent_data/{processed_agent_data_id}", response_model=ProcessedAgentDataInDB)
+@app.put("/processed_agent_data/{processed_agent_data_id}")
 def update_processed_agent_data(processed_agent_data_id: int, data: ProcessedAgentData):
-# Update data
+    # Check exists
+    query = processed_agent_data.select().where(processed_agent_data.c.id == processed_agent_data_id)
+    with engine.connect() as conn:
+        result = conn.execute(query).first()
+        if not result:
+            raise HTTPException(status_code=404, detail="Item not found")
+
+    
+    # Update data
     query = processed_agent_data.update().where(processed_agent_data.c.id == processed_agent_data_id).values(
         road_state=data.road_state,
         x=data.agent_data.accelerometer.x,
@@ -164,9 +172,10 @@ def update_processed_agent_data(processed_agent_data_id: int, data: ProcessedAge
     )
     with engine.connect() as conn:
         conn.execute(query)
+        conn.commit()
     return data
 
-@app.delete("/processed_agent_data/{processed_agent_data_id}", response_model=ProcessedAgentDataInDB)
+@app.delete("/processed_agent_data/{processed_agent_data_id}")
 def delete_processed_agent_data(processed_agent_data_id: int):
     # Delete by id
     query = processed_agent_data.delete().where(processed_agent_data.c.id == processed_agent_data_id)
@@ -174,6 +183,7 @@ def delete_processed_agent_data(processed_agent_data_id: int):
         result = conn.execute(query)
         if result.rowcount == 0:
             raise HTTPException(status_code=404, detail="Item not found")
+        conn.commit()
         return result
 
 
