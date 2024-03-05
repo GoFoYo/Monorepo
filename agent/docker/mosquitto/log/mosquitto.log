@@ -377,3 +377,13 @@
 1708638350: Client auto-345E3807-9A1F-6503-03EB-CD263648F2B1 closed its connection.
 1708638350: mosquitto version 2.0.18 terminating
 1708638350: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1709675307: mosquitto version 2.0.18 starting
+1709675307: Config loaded from /mosquitto/config/mosquitto.conf.
+1709675307: Opening ipv4 listen socket on port 1883.
+1709675307: Opening ipv6 listen socket on port 1883.
+1709675307: mosquitto version 2.0.18 running
+1709675307: New connection from 172.28.0.3:38283 on port 1883.
+1709675307: New client connected from 172.28.0.3:38283 as auto-6C815F2F-AAF8-0FE5-5505-0355D3B86CB2 (p2, c1, k60).
+1709675342: Client auto-6C815F2F-AAF8-0FE5-5505-0355D3B86CB2 closed its connection.
+1709675343: mosquitto version 2.0.18 terminating
+1709675343: Saving in-memory database to /mosquitto/data//mosquitto.db.
