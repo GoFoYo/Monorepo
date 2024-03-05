@@ -77,10 +77,32 @@ services:
     networks:
       db_network:
 
+  ## REDIS for HUB
+  redis:
+    image: redis:latest
+    container_name: ayoti_redis
+    ports:
+      - "6379:6379"
+    networks:
+      hub_redis:
+
+  ## HUB from schema
+  hub:
+    container_name: ayoti_hub
+    build: ./hub
+    depends_on:
+      - mqtt
+      - redis
+      - store
+    environment:
+      STORE_API_HOST: "store"
+      STORE_API_PORT: 8000
+
 
 networks:
   mqtt_network:
   db_network:
+  hub_redis:
 
 volumes:
   postgres_data:
