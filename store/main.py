@@ -1,9 +1,11 @@
 from config import POSTGRES_HOST, POSTGRES_PORT, POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DB
-from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Float, DateTime
+from sqlalchemy import create_engine, MetaData, text, Table, Column, Integer, String, Float, DateTime
+from sqlalchemy.dialects.postgresql import insert
 from pydantic import BaseModel, ValidationError, ValidationInfo, ValidatorFunctionWrapHandler, validator
 from datetime import datetime
-from fastapi import FastAPI, WebSocket
+from fastapi import FastAPI, WebSocket, HTTPException
 from typing import Set, List
+import asyncio
 
 # SQLAlchemy setup
 DATABASE_URL = f"postgresql+psycopg2://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
@@ -24,6 +26,19 @@ Column("longitude", Float),
 Column("timestamp", DateTime),
 )
 
+def test_connection():
+    try:
+        with engine.connect() as conn:
+            # Create a SQL expression using SQLAlchemy's text() function
+            query = text('SELECT 1')
+            # Execute the query
+            result = conn.execute(query)
+            # Fetch the result (optional)
+            row = result.fetchone()
+            # Print the result
+            print("Database connection successful:", row[0] == 1)
+    except Exception as e:
+        print("Error connecting to the database:", e)
 
 # FastAPI models
 class AccelerometerData(BaseModel):
@@ -86,25 +101,35 @@ async def send_data_to_subscribers(data):
         await websocket.send_json(json.dumps(data))
 
 
-# FastAPI CRUDL endpoints
 @app.post("/processed_agent_data/")
 async def create_processed_agent_data(data: List[ProcessedAgentData]):
-    # await
-    # Insert data to database
-    # Send data to subscribers
-    async with engine.connect() as conn:
-        for item in data:
-            query = processed_agent_data.insert().values(
-                road_state=item.road_state,
-                x=item.agent_data.accelerometer.x,
-                y=item.agent_data.accelerometer.y,
-                z=item.agent_data.accelerometer.z,
-                latitude=item.agent_data.gps.latitude,
-                longitude=item.agent_data.gps.longitude,
-                timestamp=item.agent_data.timestamp
-            )
-            await conn.execute(query)
-    await send_data_to_subscribers(data)
+    test_connection()
+    inserted_data = []
+
+    async def insert_data(data):
+        with engine.connect() as conn:
+            for item in data:
+                query = insert(processed_agent_data).values(
+                    road_state=item.road_state,
+                    x=item.agent_data.accelerometer.x,
+                    y=item.agent_data.accelerometer.y,
+                    z=item.agent_data.accelerometer.z,
+                    latitude=item.agent_data.gps.latitude,
+                    longitude=item.agent_data.gps.longitude,
+                    timestamp=item.agent_data.timestamp
+                ).returning(*processed_agent_data.c)
+
+                result = conn.execute(query)
+                inserted_data.extend(result.fetchall())
+            conn.commit()
+
+    await insert_data(data)
+
+    if not inserted_data:
+        raise HTTPException(status_code=500, detail="Failed to insert data into the database")
+
+    return { "success": True }
+
 
 @app.get("/processed_agent_data/{processed_agent_data_id}",response_model=ProcessedAgentDataInDB)
 def read_processed_agent_data(processed_agent_data_id: int):
