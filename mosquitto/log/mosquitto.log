@@ -1,0 +1,36 @@
+1709678373: mosquitto version 2.0.18 starting
+1709678373: Config loaded from /mosquitto/config/mosquitto.conf.
+1709678373: Opening ipv4 listen socket on port 1883.
+1709678373: Opening ipv6 listen socket on port 1883.
+1709678373: mosquitto version 2.0.18 running
+1709678374: New connection from 192.168.64.3:43353 on port 1883.
+1709678374: New client connected from 192.168.64.3:43353 as auto-33EF5EAE-C3B8-3BA6-6D19-46BD5527734C (p2, c1, k60).
+1709678451: Client auto-33EF5EAE-C3B8-3BA6-6D19-46BD5527734C closed its connection.
+1709678536: mosquitto version 2.0.18 terminating
+1709678536: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1709678536: Error saving in-memory database, unable to remove /mosquitto/data//mosquitto.db.new.
+1709678536: Error: Permission denied.
+1709678659: mosquitto version 2.0.18 starting
+1709678659: Config loaded from /mosquitto/config/mosquitto.conf.
+1709678659: Opening ipv4 listen socket on port 1883.
+1709678659: Opening ipv6 listen socket on port 1883.
+1709678659: mosquitto version 2.0.18 running
+1709678660: New connection from 192.168.80.3:35731 on port 1883.
+1709678660: New client connected from 192.168.80.3:35731 as auto-1A99FF6C-E754-A6A4-52C5-33C99A3B8BD3 (p2, c1, k60).
+1709678737: Client auto-1A99FF6C-E754-A6A4-52C5-33C99A3B8BD3 closed its connection.
+1709678737: mosquitto version 2.0.18 terminating
+1709678737: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1709678737: Error saving in-memory database, unable to remove /mosquitto/data//mosquitto.db.new.
+1709678737: Error: Permission denied.
+1709678741: mosquitto version 2.0.18 starting
+1709678741: Config loaded from /mosquitto/config/mosquitto.conf.
+1709678741: Opening ipv4 listen socket on port 1883.
+1709678741: Opening ipv6 listen socket on port 1883.
+1709678741: mosquitto version 2.0.18 running
+1709678741: New connection from 192.168.112.3:40737 on port 1883.
+1709678741: New client connected from 192.168.112.3:40737 as auto-01E238C5-EF97-3FE7-98CE-2F5F5D14A647 (p2, c1, k60).
+1709678754: Client auto-01E238C5-EF97-3FE7-98CE-2F5F5D14A647 closed its connection.
+1709678754: mosquitto version 2.0.18 terminating
+1709678754: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1709678754: Error saving in-memory database, unable to remove /mosquitto/data//mosquitto.db.new.
+1709678754: Error: Permission denied.
