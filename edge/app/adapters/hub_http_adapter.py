@@ -1,6 +1,7 @@
 import requests
 from marshmallow import Schema, fields, post_load
 from app.interfaces.hub_gateway import HubGateway
+from app.entities.processed_agent_data import ProcessedAgentData
 
 class ProcessedAgentDataSchema(Schema):
     road_state = fields.Str()
@@ -12,8 +13,8 @@ class ProcessedAgentDataSchema(Schema):
 
 
 class HubHttpAdapter(HubGateway):
-    def __init__(self, endpoint: str):
-        self.endpoint = endpoint
+    def __init__(self, api_base_url: str):
+        self.endpoint = api_base_url
         self.schema = ProcessedAgentDataSchema()
 
     def save_data(self, processed_data: ProcessedAgentData) -> bool:
