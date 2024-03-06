@@ -25,3 +25,11 @@ class AgentData(BaseModel):
         except (TypeError, ValueError):
             raise ValueError(
             "Invalid timestamp format. Expected ISO 8601 format(YYYY-MM-DDTHH:MM:SSZ).")
+        
+    def dict(self, *args, **kwargs):
+        # Convert timestamp to ISO format string
+        iso_timestamp = self.timestamp.isoformat()
+        # Remove timestamp from the dictionary to avoid recursion error
+        data_dict = super().dict(*args, **kwargs)
+        data_dict['timestamp'] = iso_timestamp
+        return data_dict

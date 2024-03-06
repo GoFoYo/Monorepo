@@ -27,9 +27,7 @@ class HubHttpAdapter(HubGateway):
         bool: True if the data is successfully sent, False otherwise.
         """
         try:
-            print(123123213)
             serialized_data = self.schema.dump(processed_data)
-            print("SEND DATA TO HUB", "POST", f"{self.endpoint}/processed_agent_data")
             response = requests.post(f"{self.endpoint}/processed_agent_data", json=serialized_data)
             response.raise_for_status()
             return True
