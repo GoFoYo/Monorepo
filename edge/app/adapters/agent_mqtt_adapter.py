@@ -1,5 +1,6 @@
 import paho.mqtt.client as mqtt
 from abc import ABC, abstractmethod
+from app.interfaces.agent_gateway import AgentGateway
 
 class AgentMQTTAdapter(AgentGateway):
     def __init__(self, broker_host, broker_port, topic, hub_gateway):
@@ -26,7 +27,7 @@ class AgentMQTTAdapter(AgentGateway):
             )
 
             processed_data = process_agent_data(agent_data)
-            
+
         except Exception as e:
             print(f"Error processing message: {e}")
 
