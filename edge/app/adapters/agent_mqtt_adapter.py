@@ -27,6 +27,7 @@ class AgentMQTTAdapter(AgentGateway):
             )
 
             processed_data = process_agent_data(agent_data)
+            hub_gateway.save_data(processed_data)
 
         except Exception as e:
             print(f"Error processing message: {e}")
