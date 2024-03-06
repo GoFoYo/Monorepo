@@ -2,10 +2,11 @@ import requests
 from marshmallow import Schema, fields, post_load
 from app.interfaces.hub_gateway import HubGateway
 from app.entities.processed_agent_data import ProcessedAgentData
+from app.entities.agent_data import AgentDataSchema
 
 class ProcessedAgentDataSchema(Schema):
     road_state = fields.Str()
-    agent_data = fields.Nested("AgentDataSchema")
+    agent_data = fields.Nested(AgentDataSchema)
 
     @post_load
     def make_processed_agent_data(self, data, **kwargs):
@@ -26,8 +27,10 @@ class HubHttpAdapter(HubGateway):
         bool: True if the data is successfully sent, False otherwise.
         """
         try:
-            serialized_data = self.schema.dump(processed_data, many=True)
-            response = requests.post(self.endpoint, json=serialized_data)
+            print(123123213)
+            serialized_data = self.schema.dump(processed_data)
+            print("SEND DATA TO HUB", "POST", f"{self.endpoint}/processed_agent_data")
+            response = requests.post(f"{self.endpoint}/processed_agent_data", json=serialized_data)
             response.raise_for_status()
             return True
         except requests.RequestException as e:

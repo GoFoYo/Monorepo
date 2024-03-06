@@ -46,3 +46,159 @@
 1709680258: Saving in-memory database to /mosquitto/data//mosquitto.db.
 1709680258: Error saving in-memory database, unable to remove /mosquitto/data//mosquitto.db.new.
 1709680258: Error: Permission denied.
+1709757080: mosquitto version 2.0.18 starting
+1709757080: Config loaded from /mosquitto/config/mosquitto.conf.
+1709757080: Opening ipv4 listen socket on port 1883.
+1709757080: Opening ipv6 listen socket on port 1883.
+1709757080: mosquitto version 2.0.18 running
+1709757081: New connection from 192.168.16.3:40821 on port 1883.
+1709757081: New client connected from 192.168.16.3:40821 as auto-6F320719-7CE2-CEB9-EC04-2460B2FC3FE1 (p2, c1, k60).
+1709757158: Client auto-6F320719-7CE2-CEB9-EC04-2460B2FC3FE1 closed its connection.
+1709757176: mosquitto version 2.0.18 terminating
+1709757176: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1709757212: mosquitto version 2.0.18 starting
+1709757212: Config loaded from /mosquitto/config/mosquitto.conf.
+1709757212: Opening ipv4 listen socket on port 1883.
+1709757212: Opening ipv6 listen socket on port 1883.
+1709757212: mosquitto version 2.0.18 running
+1709757213: New connection from 192.168.112.3:46077 on port 1883.
+1709757213: New client connected from 192.168.112.3:46077 as auto-613331BE-D569-F4C5-3558-C675E9F0AC64 (p2, c1, k60).
+1709757273: Client auto-613331BE-D569-F4C5-3558-C675E9F0AC64 closed its connection.
+1709757273: mosquitto version 2.0.18 terminating
+1709757273: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1709757293: mosquitto version 2.0.18 starting
+1709757293: Config loaded from /mosquitto/config/mosquitto.conf.
+1709757293: Opening ipv4 listen socket on port 1883.
+1709757293: Opening ipv6 listen socket on port 1883.
+1709757293: mosquitto version 2.0.18 running
+1709757293: New connection from 192.168.208.3:34947 on port 1883.
+1709757293: New client connected from 192.168.208.3:34947 as auto-EFA714F7-7D02-9129-1AF5-01CF66A2102F (p2, c1, k60).
+1709757317: Client auto-EFA714F7-7D02-9129-1AF5-01CF66A2102F closed its connection.
+1709757317: mosquitto version 2.0.18 terminating
+1709757317: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1709757321: mosquitto version 2.0.18 starting
+1709757321: Config loaded from /mosquitto/config/mosquitto.conf.
+1709757321: Opening ipv4 listen socket on port 1883.
+1709757321: Opening ipv6 listen socket on port 1883.
+1709757321: mosquitto version 2.0.18 running
+1709757322: New connection from 172.27.0.3:41761 on port 1883.
+1709757322: New client connected from 172.27.0.3:41761 as auto-EB61F95D-BD02-83FD-3E7B-FB72EBED40AB (p2, c1, k60).
+1709757323: New connection from 172.27.0.5:57967 on port 1883.
+1709757323: New client connected from 172.27.0.5:57967 as auto-C732E867-69FC-61A2-A080-E601B6BAAC08 (p2, c1, k60).
+1709757380: Client auto-C732E867-69FC-61A2-A080-E601B6BAAC08 closed its connection.
+1709757380: Client auto-EB61F95D-BD02-83FD-3E7B-FB72EBED40AB closed its connection.
+1709757381: mosquitto version 2.0.18 terminating
+1709757381: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1709757615: mosquitto version 2.0.18 starting
+1709757615: Config loaded from /mosquitto/config/mosquitto.conf.
+1709757615: Opening ipv4 listen socket on port 1883.
+1709757615: Opening ipv6 listen socket on port 1883.
+1709757615: mosquitto version 2.0.18 running
+1709757616: New connection from 192.168.32.3:59017 on port 1883.
+1709757616: New client connected from 192.168.32.3:59017 as auto-8C29128B-746E-583D-8C4F-24FC73BDE3A3 (p2, c1, k60).
+1709757617: New connection from 192.168.32.5:33081 on port 1883.
+1709757617: New client connected from 192.168.32.5:33081 as auto-81F2E9DD-7AF0-F558-C11A-D31BD887BCB2 (p2, c1, k60).
+1709757691: Client auto-8C29128B-746E-583D-8C4F-24FC73BDE3A3 closed its connection.
+1709757729: Client auto-81F2E9DD-7AF0-F558-C11A-D31BD887BCB2 closed its connection.
+1709757730: mosquitto version 2.0.18 terminating
+1709757730: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1709757734: mosquitto version 2.0.18 starting
+1709757734: Config loaded from /mosquitto/config/mosquitto.conf.
+1709757734: Opening ipv4 listen socket on port 1883.
+1709757734: Opening ipv6 listen socket on port 1883.
+1709757734: mosquitto version 2.0.18 running
+1709757735: New connection from 192.168.128.3:56751 on port 1883.
+1709757735: New client connected from 192.168.128.3:56751 as auto-86491F9F-F665-9E8C-247D-A54651154538 (p2, c1, k60).
+1709757736: New connection from 192.168.128.5:47779 on port 1883.
+1709757736: New client connected from 192.168.128.5:47779 as auto-F1BFEA58-7C61-9821-C7C7-890616554D02 (p2, c1, k60).
+1709757811: Client auto-86491F9F-F665-9E8C-247D-A54651154538 closed its connection.
+1709757817: Client auto-F1BFEA58-7C61-9821-C7C7-890616554D02 closed its connection.
+1709757824: New connection from 192.168.128.3:48117 on port 1883.
+1709757824: New client connected from 192.168.128.3:48117 as auto-1C12C916-FD6F-96EB-549C-1146252D5295 (p2, c1, k60).
+1709757825: New connection from 192.168.128.5:37105 on port 1883.
+1709757825: New client connected from 192.168.128.5:37105 as auto-0C75B52E-174E-D976-ED28-FFDFCA3E5DD6 (p2, c1, k60).
+1709757883: Client auto-0C75B52E-174E-D976-ED28-FFDFCA3E5DD6 closed its connection.
+1709757888: New connection from 192.168.128.5:46767 on port 1883.
+1709757888: New client connected from 192.168.128.5:46767 as auto-636E0783-66F0-1B42-7B64-A0009089C8DE (p2, c1, k60).
+1709757899: Client auto-1C12C916-FD6F-96EB-549C-1146252D5295 closed its connection.
+1709758079: New connection from 192.168.128.3:35235 on port 1883.
+1709758079: New client connected from 192.168.128.3:35235 as auto-DFBA42D0-6240-A4BA-961F-8632879587A4 (p2, c1, k60).
+1709758154: Client auto-DFBA42D0-6240-A4BA-961F-8632879587A4 closed its connection.
+1709758159: New connection from 192.168.128.3:48191 on port 1883.
+1709758159: New client connected from 192.168.128.3:48191 as auto-BED032FA-A466-250E-9FAC-3956434E3B5D (p2, c1, k60).
+1709758160: Client auto-636E0783-66F0-1B42-7B64-A0009089C8DE has exceeded timeout, disconnecting.
+1709758218: New connection from 192.168.128.5:35063 on port 1883.
+1709758218: New client connected from 192.168.128.5:35063 as auto-A6EFB941-F55B-4C52-956E-CDA7A35EE030 (p2, c1, k60).
+1709758235: Client auto-BED032FA-A466-250E-9FAC-3956434E3B5D closed its connection.
+1709758265: New connection from 192.168.128.3:40625 on port 1883.
+1709758265: New client connected from 192.168.128.3:40625 as auto-15129393-2EA3-8DC3-A780-36808529FBA8 (p2, c1, k60).
+1709758341: Client auto-15129393-2EA3-8DC3-A780-36808529FBA8 closed its connection.
+1709758355: New connection from 192.168.128.3:48813 on port 1883.
+1709758355: New client connected from 192.168.128.3:48813 as auto-1569DDAF-4ABC-B1EE-0ECD-CE7030A9ECE8 (p2, c1, k60).
+1709758415: New connection from 192.168.128.4:36377 on port 1883.
+1709758415: New client connected from 192.168.128.4:36377 as auto-7A4F7B44-EC27-DD26-66E8-0D8679E766D9 (p2, c1, k60).
+1709758431: Client auto-1569DDAF-4ABC-B1EE-0ECD-CE7030A9ECE8 closed its connection.
+1709758510: New connection from 192.168.128.3:50015 on port 1883.
+1709758510: New client connected from 192.168.128.3:50015 as auto-5421E604-894C-2B01-D300-47ABBF5D917B (p2, c1, k60).
+1709758520: Client auto-A6EFB941-F55B-4C52-956E-CDA7A35EE030 closed its connection.
+1709758521: New connection from 192.168.128.5:51141 on port 1883.
+1709758521: New client connected from 192.168.128.5:51141 as auto-6F744CBA-95C2-4665-6A76-BCF7C98C522E (p2, c1, k60).
+1709758586: Client auto-5421E604-894C-2B01-D300-47ABBF5D917B closed its connection.
+1709758627: Client auto-7A4F7B44-EC27-DD26-66E8-0D8679E766D9 closed its connection.
+1709758627: New connection from 192.168.128.3:38857 on port 1883.
+1709758627: New client connected from 192.168.128.3:38857 as auto-F5ECAB56-E812-25BE-6E77-3501ACABACF3 (p2, c1, k60).
+1709758628: New connection from 192.168.128.4:47681 on port 1883.
+1709758628: New client connected from 192.168.128.4:47681 as auto-9A70F33D-97D7-FA61-841E-C09720CF7B0B (p2, c1, k60).
+1709758638: Client auto-6F744CBA-95C2-4665-6A76-BCF7C98C522E closed its connection.
+1709758639: New connection from 192.168.128.5:38055 on port 1883.
+1709758639: New client connected from 192.168.128.5:38055 as auto-90235055-FE5F-DBE6-17F0-CBD03AC38F7D (p2, c1, k60).
+1709758702: Client auto-F5ECAB56-E812-25BE-6E77-3501ACABACF3 closed its connection.
+1709758729: New connection from 192.168.128.3:46567 on port 1883.
+1709758729: New client connected from 192.168.128.3:46567 as auto-BCE2990B-33BE-7E61-EC64-D04E073658B9 (p2, c1, k60).
+1709758739: Client auto-90235055-FE5F-DBE6-17F0-CBD03AC38F7D closed its connection.
+1709758740: New connection from 192.168.128.5:43907 on port 1883.
+1709758740: New client connected from 192.168.128.5:43907 as auto-29991012-B983-4688-909B-9FEB077C88F8 (p2, c1, k60).
+1709758769: Client auto-29991012-B983-4688-909B-9FEB077C88F8 closed its connection.
+1709758770: New connection from 192.168.128.5:44039 on port 1883.
+1709758770: New client connected from 192.168.128.5:44039 as auto-5F44D115-6D07-7C40-13B6-4D0D9080DC88 (p2, c1, k60).
+1709758805: Client auto-BCE2990B-33BE-7E61-EC64-D04E073658B9 closed its connection.
+1709758816: New connection from 192.168.128.3:50517 on port 1883.
+1709758816: New client connected from 192.168.128.3:50517 as auto-953A24E5-7385-734B-243C-F729ACDB1462 (p2, c1, k60).
+1709758825: Client auto-5F44D115-6D07-7C40-13B6-4D0D9080DC88 closed its connection.
+1709758826: New connection from 192.168.128.5:39513 on port 1883.
+1709758826: New client connected from 192.168.128.5:39513 as auto-6DC5B4D2-8C74-9036-39E5-4DE161433065 (p2, c1, k60).
+1709758876: Client auto-6DC5B4D2-8C74-9036-39E5-4DE161433065 closed its connection.
+1709758877: New connection from 192.168.128.5:38401 on port 1883.
+1709758877: New client connected from 192.168.128.5:38401 as auto-32BA4E6E-DA95-27B9-638A-781C214F7C49 (p2, c1, k60).
+1709758891: Client auto-953A24E5-7385-734B-243C-F729ACDB1462 closed its connection.
+1709758934: New connection from 192.168.128.3:40205 on port 1883.
+1709758934: New client connected from 192.168.128.3:40205 as auto-C7789394-22CE-826C-4939-4B45C6F903DF (p2, c1, k60).
+1709758943: Client auto-32BA4E6E-DA95-27B9-638A-781C214F7C49 closed its connection.
+1709758945: New connection from 192.168.128.5:59475 on port 1883.
+1709758945: New client connected from 192.168.128.5:59475 as auto-18072D7B-A4B2-D245-EEB8-67B3EDD1BEFF (p2, c1, k60).
+1709759009: Client auto-C7789394-22CE-826C-4939-4B45C6F903DF closed its connection.
+1709759158: New connection from 192.168.128.3:48333 on port 1883.
+1709759158: New client connected from 192.168.128.3:48333 as auto-BFA0E609-7E1E-E544-A066-4190D8CCDA5A (p2, c1, k60).
+1709759168: Client auto-18072D7B-A4B2-D245-EEB8-67B3EDD1BEFF closed its connection.
+1709759169: New connection from 192.168.128.5:54725 on port 1883.
+1709759169: New client connected from 192.168.128.5:54725 as auto-CEF760CF-2A5A-2F72-E764-1C36298DA90E (p2, c1, k60).
+1709759234: Client auto-BFA0E609-7E1E-E544-A066-4190D8CCDA5A closed its connection.
+1709759236: Client auto-CEF760CF-2A5A-2F72-E764-1C36298DA90E closed its connection.
+1709759237: New connection from 192.168.128.3:42069 on port 1883.
+1709759237: New client connected from 192.168.128.3:42069 as auto-37001302-D589-622A-759B-09241C8082AF (p2, c1, k60).
+1709759254: New connection from 192.168.128.5:37535 on port 1883.
+1709759254: New client connected from 192.168.128.5:37535 as auto-E038CE20-942B-48F4-FBD5-590FA0042ABB (p2, c1, k60).
+1709759310: Client auto-37001302-D589-622A-759B-09241C8082AF closed its connection.
+1709759311: New connection from 192.168.128.3:41555 on port 1883.
+1709759311: New client connected from 192.168.128.3:41555 as auto-D9EF4A43-72A5-6EF1-AEE7-50C721279722 (p2, c1, k60).
+1709759330: Client auto-E038CE20-942B-48F4-FBD5-590FA0042ABB closed its connection.
+1709759409: New connection from 192.168.128.5:40887 on port 1883.
+1709759409: New client connected from 192.168.128.5:40887 as auto-C7D3068B-AD49-9614-C27B-BAC34078681A (p2, c1, k60).
+1709759419: Client auto-D9EF4A43-72A5-6EF1-AEE7-50C721279722 closed its connection.
+1709759420: New connection from 192.168.128.3:33265 on port 1883.
+1709759420: New client connected from 192.168.128.3:33265 as auto-37D188C6-1573-E573-52DE-23576D77CC51 (p2, c1, k60).
+1709759478: Client auto-C7D3068B-AD49-9614-C27B-BAC34078681A closed its connection.
+1709759478: Client auto-37D188C6-1573-E573-52DE-23576D77CC51 closed its connection.
+1709759479: Client auto-9A70F33D-97D7-FA61-841E-C09720CF7B0B closed its connection.
+1709759480: mosquitto version 2.0.18 terminating
+1709759480: Saving in-memory database to /mosquitto/data//mosquitto.db.

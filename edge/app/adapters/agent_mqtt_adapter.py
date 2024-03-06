@@ -1,6 +1,6 @@
 import paho.mqtt.client as mqtt
 import json
-from app.entities.agent_data import AgentData
+from app.entities.agent_data import AgentData, GpsData
 from app.interfaces.agent_gateway import AgentGateway
 from app.interfaces.hub_gateway import HubGateway
 from app.usecases.data_processing import process_agent_data
@@ -21,15 +21,13 @@ class AgentMQTTAdapter(AgentGateway):
             payload = json.loads(msg.payload.decode('utf-8'))
             print(payload)
             accelerometer_data = payload['accelerometer']
-            gps_data = payload['gps']
+            gps_data = payload['gps'] or GpsData(latitude=0, longitude=0)
             timestamp = payload['time']
-
             agent_data = AgentData(
                 accelerometer=accelerometer_data,
                 gps=gps_data,
                 timestamp=timestamp
             )
-
             processed_data = process_agent_data(agent_data)
             self.hub_gateway.save_data(processed_data)
 
