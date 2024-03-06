@@ -1,7 +1,7 @@
 import logging
 from app.adapters.agent_mqtt_adapter import AgentMQTTAdapter
 from app.adapters.hub_http_adapter import HubHttpAdapter
-from app.adapters.hub_mqtt_adapter import HubMqttAdapter
+# from app.adapters.hub_mqtt_adapter import HubMqttAdapter
 from config import MQTT_BROKER_HOST, MQTT_BROKER_PORT, MQTT_TOPIC, HUB_URL, HUB_MQTT_BROKER_HOST, HUB_MQTT_BROKER_PORT, HUB_MQTT_TOPIC
 
 if __name__ == "__main__":
@@ -16,14 +16,14 @@ if __name__ == "__main__":
     )
 
 # Create an instance of the StoreApiAdapter using the configuration
-# hub_adapter = HubHttpAdapter(
-# api_base_url=HUB_URL,
-# )
-hub_adapter = HubMqttAdapter(
-broker=HUB_MQTT_BROKER_HOST,
-port=HUB_MQTT_BROKER_PORT,
-topic=HUB_MQTT_TOPIC,
+hub_adapter = HubHttpAdapter(
+api_base_url=HUB_URL,
 )
+# hub_adapter = HubMqttAdapter(
+# broker=HUB_MQTT_BROKER_HOST,
+# port=HUB_MQTT_BROKER_PORT,
+# topic=HUB_MQTT_TOPIC,
+# )
 # Create an instance of the AgentMQTTAdapter using the configuration
 agent_adapter = AgentMQTTAdapter(
 broker_host=MQTT_BROKER_HOST,
