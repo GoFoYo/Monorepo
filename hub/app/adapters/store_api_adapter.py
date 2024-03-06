@@ -16,6 +16,7 @@ class StoreApiAdapter(StoreGateway):
         api_url = f"{self.api_base_url}/processed_agent_data"
         try:
             data_to_send = [item.dict() for item in processed_agent_data_batch]
+            print("ACTION: HUB SEND DATA TO STORE")
             response = requests.post(api_url, json=data_to_send)
             response.raise_for_status()
             return True

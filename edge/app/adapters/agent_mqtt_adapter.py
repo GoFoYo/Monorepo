@@ -19,6 +19,7 @@ class AgentMQTTAdapter(AgentGateway):
         """
         try:
             payload = json.loads(msg.payload.decode('utf-8'))
+            print("ACTION: EDGE RECEIVE DATA FROM AGENT")
             print(payload)
             accelerometer_data = payload['accelerometer']
             gps_data = payload['gps'] or GpsData(latitude=0, longitude=0)

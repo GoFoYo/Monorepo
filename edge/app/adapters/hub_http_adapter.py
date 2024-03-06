@@ -28,6 +28,7 @@ class HubHttpAdapter(HubGateway):
         """
         try:
             serialized_data = self.schema.dump(processed_data)
+            print("ACTION: EDGE SEND DATA TO HUB")
             response = requests.post(f"{self.endpoint}/processed_agent_data", json=serialized_data)
             response.raise_for_status()
             return True

@@ -103,6 +103,7 @@ async def send_data_to_subscribers(data):
 
 @app.post("/processed_agent_data/")
 async def create_processed_agent_data(data: List[ProcessedAgentData]):
+    print("ACTION: STORE RECEIVE DATA FROM HUB")
     test_connection()
     inserted_data = []
 
@@ -124,6 +125,7 @@ async def create_processed_agent_data(data: List[ProcessedAgentData]):
             conn.commit()
 
     await insert_data(data)
+    print("ACTION: STORE SAVES DATA TO DB")
 
     if not inserted_data:
         raise HTTPException(status_code=500, detail="Failed to insert data into the database")
