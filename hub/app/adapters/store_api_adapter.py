@@ -1,10 +1,10 @@
 import json
 import logging
 from typing import List
-import pydantic_core
+# import pydantic_core
 import requests
 from app.entities.processed_agent_data import ProcessedAgentData
-from app.interfaces.store_gateway import StoreGateway
+from app.interfaces.store_api_gateway import StoreGateway
 
 class StoreApiAdapter(StoreGateway):
     def __init__(self, api_base_url):

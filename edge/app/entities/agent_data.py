@@ -1,5 +1,7 @@
 from datetime import datetime
 from pydantic import BaseModel, field_validator
+from marshmallow import Schema, fields
+
 
 class AccelerometerData(BaseModel):
     x: float
@@ -25,3 +27,18 @@ class AgentData(BaseModel):
         except (TypeError, ValueError):
             raise ValueError(
             "Invalid timestamp format. Expected ISO 8601 format(YYYY-MM-DDTHH:MM:SSZ).")
+        
+
+class AccelerometerDataSchema(Schema):
+    x = fields.Float()
+    y = fields.Float()
+    z = fields.Float()
+
+class GpsDataSchema(Schema):
+    latitude = fields.Float()
+    longitude = fields.Float()
+
+class AgentDataSchema(Schema):
+    accelerometer = fields.Nested(AccelerometerDataSchema)
+    gps = fields.Nested(GpsDataSchema)
+    timestamp = fields.DateTime()

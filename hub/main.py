@@ -27,7 +27,7 @@ app = FastAPI()
 @app.post("/processed_agent_data/")
 async def save_processed_agent_data(processed_agent_data:
 ProcessedAgentData):
-    print(processed_agent_data)
+    print("HUB:", processed_agent_data)
     redis_client.lpush(
     "processed_agent_data",
     processed_agent_data.model_dump_json()
