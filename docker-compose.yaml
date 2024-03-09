@@ -129,7 +129,6 @@ services:
       DELAY: 0.1
     networks:
       mqtt_network:
-
 networks:
   mqtt_network:
   db_network:

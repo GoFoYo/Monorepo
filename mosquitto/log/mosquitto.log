@@ -287,3 +287,56 @@
 1709760996: Client auto-F80F7CF6-8994-F8AF-581C-B02956A7BE62 closed its connection.
 1709760997: mosquitto version 2.0.18 terminating
 1709760997: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1709923164: mosquitto version 2.0.18 starting
+1709923164: Config loaded from /mosquitto/config/mosquitto.conf.
+1709923164: Opening ipv4 listen socket on port 1883.
+1709923164: Opening ipv6 listen socket on port 1883.
+1709923164: mosquitto version 2.0.18 running
+1709923165: New connection from 172.30.0.3:59337 on port 1883.
+1709923165: New client connected from 172.30.0.3:59337 as auto-C3BF150B-6388-4017-94F6-E494F9AB3DD1 (p2, c1, k60).
+1709923167: New connection from 172.30.0.5:34641 on port 1883.
+1709923167: New client connected from 172.30.0.5:34641 as auto-42E8C256-C173-F546-1867-1EB51BBF1535 (p2, c1, k60).
+1709923167: New connection from 172.30.0.4:38739 on port 1883.
+1709923167: New client connected from 172.30.0.4:38739 as auto-CF1D0927-B20F-575D-4470-76BA6D3B3CDA (p2, c1, k60).
+1709923241: Client auto-C3BF150B-6388-4017-94F6-E494F9AB3DD1 closed its connection.
+1709924965: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1709926766: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1709928567: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1709930368: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1709932169: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1709933970: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1709935771: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1709936317: mosquitto version 2.0.18 terminating
+1709936317: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1709971274: mosquitto version 2.0.18 starting
+1709971274: Config loaded from /mosquitto/config/mosquitto.conf.
+1709971274: Opening ipv4 listen socket on port 1883.
+1709971274: Opening ipv6 listen socket on port 1883.
+1709971274: mosquitto version 2.0.18 running
+1709971275: New connection from 172.30.0.3:33647 on port 1883.
+1709971275: New client connected from 172.30.0.3:33647 as auto-7E46F5F5-9239-9844-4AB7-858F99F3BADE (p2, c1, k60).
+1709971276: New connection from 172.30.0.5:50977 on port 1883.
+1709971276: New client connected from 172.30.0.5:50977 as auto-93512C61-569D-AA0C-5315-2DA8F3FDA6EB (p2, c1, k60).
+1709971276: New connection from 172.30.0.4:54849 on port 1883.
+1709971276: New client connected from 172.30.0.4:54849 as auto-AB0F2D9F-DABA-DED6-3267-3F3D2EF61C45 (p2, c1, k60).
+1709971350: Client auto-7E46F5F5-9239-9844-4AB7-858F99F3BADE closed its connection.
+1709971351: Client auto-93512C61-569D-AA0C-5315-2DA8F3FDA6EB closed its connection.
+1709971352: Client auto-AB0F2D9F-DABA-DED6-3267-3F3D2EF61C45 closed its connection.
+1709971352: mosquitto version 2.0.18 terminating
+1709971352: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1709971405: mosquitto version 2.0.18 starting
+1709971405: Config loaded from /mosquitto/config/mosquitto.conf.
+1709971405: Opening ipv4 listen socket on port 1883.
+1709971405: Opening ipv6 listen socket on port 1883.
+1709971405: mosquitto version 2.0.18 running
+1709971406: New connection from 172.23.0.3:38103 on port 1883.
+1709971406: New client connected from 172.23.0.3:38103 as auto-7DB9B1D5-0CDF-D783-4056-26AB2527E885 (p2, c1, k60).
+1709971407: New connection from 172.23.0.5:45313 on port 1883.
+1709971407: New client connected from 172.23.0.5:45313 as auto-66374156-C714-D4FE-2C15-07EB1D2B0C1B (p2, c1, k60).
+1709971407: New connection from 172.23.0.4:47691 on port 1883.
+1709971407: New client connected from 172.23.0.4:47691 as auto-DE9E448A-CDCD-4A9F-4710-6F25F8947EDF (p2, c1, k60).
+1709971482: Client auto-7DB9B1D5-0CDF-D783-4056-26AB2527E885 closed its connection.
+1709971728: Client auto-66374156-C714-D4FE-2C15-07EB1D2B0C1B closed its connection.
+1709971728: Client auto-DE9E448A-CDCD-4A9F-4710-6F25F8947EDF closed its connection.
+1709971729: mosquitto version 2.0.18 terminating
+1709971729: Saving in-memory database to /mosquitto/data//mosquitto.db.
