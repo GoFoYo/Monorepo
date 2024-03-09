@@ -33,6 +33,7 @@ def publish(client, topic, parking_topic, datasource, delay):
     print(f"Parking: {parking_data}")
     msg = AggregatedDataSchema().dumps(data)
     parking_msg = ParkingSchema().dumps(parking_data)
+    print("ACTION: AGENT SEND DATA")
     result = client.publish(topic, msg)
     # result: [0, 1]
     status = result[0]
