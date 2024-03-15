@@ -22,7 +22,7 @@ class AgentMQTTAdapter(AgentGateway):
             print("ACTION: EDGE RECEIVE DATA FROM AGENT")
             print(payload)
             accelerometer_data = payload['accelerometer']
-            gps_data = payload['gps'] or GpsData(latitude=0, longitude=0)
+            gps_data = payload['gps']
             timestamp = payload['time']
             agent_data = AgentData(
                 accelerometer=accelerometer_data,

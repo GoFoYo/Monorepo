@@ -13,6 +13,7 @@ class FileDatasource:
         self.parking_data = None
         self.is_reading_finished = False
         self.iteration = 0
+        self.gps_proportion_iterator = 0
         
     def isReadingFinished(self) -> bool:
         """Метод повертає True якщо читання даних завершено"""
@@ -22,20 +23,19 @@ class FileDatasource:
         """Метод повертає дані отримані з датчиків"""
         if (self.iteration == 0):
             self.startReading()
-            
         self.iteration += 1
-        accelerometer = self._get_next_or_none(self.accelerometer_data)
-        gps = self._get_next_or_none(self.gps_data)
-        parking = self._get_next_or_none(self.parking_data)
+        accelerometer = self._get_next_or_none(self.accelerometer_data, False)
+        gps = self._get_next_or_none(self.gps_data, True)
+        parking = self._get_next_or_none(self.parking_data, False)
 
         if (all(schema is None for schema in [accelerometer, gps, parking])):
           self.stopReading()
 
         return AggregatedData(
-                accelerometer=self._get_next_or_none(self.accelerometer_data), 
-                gps=self._get_next_or_none(self.gps_data), 
+                accelerometer=self._get_next_or_none(self.accelerometer_data, False), 
+                gps=self._get_next_or_none(self.gps_data, True), 
                 time=datetime.now()
-            ), self._get_next_or_none(self.parking_data)
+            ), self._get_next_or_none(self.parking_data, False)
 
     def startReading(self, *args, **kwargs):
         """Метод повинен викликатись перед початком читання даних"""
@@ -48,9 +48,21 @@ class FileDatasource:
         """Метод повинен викликатись для закінчення читання даних"""
         self.is_reading_finished = True
     
-    def _get_next_or_none(self, iterator):
+    def _get_next_or_none(self, iterator, isGps):
         try:
-            return next(iterator)
+            if(isGps):
+                if(self.gps_proportion_iterator == 0):
+                    self.nextIt = next(iterator) 
+                    self.gps_proportion_iterator += 1
+
+                    return self.nextIt
+                else:
+                    self.gps_proportion_iterator += 1
+                    if(self.gps_proportion_iterator == 10):
+                        self.gps_proportion_iterator = 0
+                    return self.nextIt
+            else:
+                return next(iterator)
         except StopIteration:
             return None
 

@@ -6,6 +6,7 @@ from datetime import datetime
 from fastapi import FastAPI, WebSocket, HTTPException
 from typing import Set, List
 import asyncio
+import json
 
 # SQLAlchemy setup
 DATABASE_URL = f"postgresql+psycopg2://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
@@ -63,10 +64,22 @@ class AgentData(BaseModel):
             return datetime.fromisoformat(value)
         except (TypeError, ValueError):
             raise ValueError("Invalid timestamp format. Expected ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ).")
+    def dict(self, *args, **kwargs):
+        # Convert timestamp to ISO format string
+        iso_timestamp = self.timestamp.isoformat()
+        # Remove timestamp from the dictionary to avoid recursion error
+        data_dict = super().dict(*args, **kwargs)
+        data_dict['timestamp'] = iso_timestamp
+        return data_dict
 
 class ProcessedAgentData(BaseModel):
     road_state: str
     agent_data: AgentData
+    def dict(self, *args, **kwargs):
+        # Remove agent_data from the dictionary to avoid recursion error
+        data_dict = super().dict(*args, **kwargs)
+        data_dict['agent_data'] = self.agent_data.dict()
+        return data_dict
 
 # Database model
 class ProcessedAgentDataInDB(BaseModel):
@@ -98,7 +111,10 @@ async def websocket_endpoint(websocket: WebSocket):
 # Function to send data to subscribed users
 async def send_data_to_subscribers(data):
     for websocket in subscriptions:
-        await websocket.send_json(json.dumps(data))
+        data1 = [agent_data.dict() for agent_data in data]
+        # message = json.dumps(data1)
+        print('Send data WS', data1)
+        await websocket.send_json(data1)
 
 
 @app.post("/processed_agent_data/")
@@ -124,7 +140,8 @@ async def create_processed_agent_data(data: List[ProcessedAgentData]):
                 inserted_data.extend(result.fetchall())
             conn.commit()
 
-    await insert_data(data)
+    await send_data_to_subscribers(data)
+    # await insert_data(data)
     print("ACTION: STORE SAVES DATA TO DB")
 
     if not inserted_data:
