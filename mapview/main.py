@@ -1,15 +1,41 @@
 import asyncio
 import csv
 import scipy.signal
-
+import websockets
+import time
+import json
 from kivy.app import App
 from kivy_garden.mapview import MapMarker, MapView
 from kivy.clock import Clock
 from lineMapLayer import LineMapLayer
 from datasource import Datasource
+from entities.processed_agent_data import ProcessedAgentData
 
 data_file = "./data.csv"
 gps_file = "./gps.csv"
+API_URL = "ws://localhost:8000/ws/"
+
+def push_data(mapViewApp, data):
+    z_values = [processed_agent_data.agent_data.accelerometer.z for processed_agent_data in data if processed_agent_data.agent_data is not None]
+    gps_data_array = [
+    [processed_agent_data.agent_data.gps.longitude, processed_agent_data.agent_data.gps.latitude]
+        for processed_agent_data in data if processed_agent_data.agent_data is not None
+    ]
+    
+    mapViewApp.data_array.extend(z_values)
+    filtered_array = [arr for arr in gps_data_array if arr != [0, 0]]
+    mapViewApp.gps_array.extend(filtered_array)
+
+async def connect_websocket(mapViewApp):
+    async with websockets.connect(API_URL) as websocket:
+        while True:
+            data = await websocket.recv()
+            parsed_data_array = json.loads(data)
+            result = []
+            for parsed_data in parsed_data_array:
+                received_obj = ProcessedAgentData(**parsed_data)  # Unpack dictionary into object
+                result.append(received_obj)
+            push_data(mapViewApp, result)
 
 
 class MapViewApp(App):
@@ -18,38 +44,19 @@ class MapViewApp(App):
         self.car_marker = None
 
         self.map = LineMapLayer()
-        self.data_array = []
-        self.gps_array = []
+        self.data_array = [] # only z coordinate from accelerometer
+        self.gps_array = [] # [[1,2], [3,4]]
         self.data_peaks = []
-
-        self.emulation_data_array = []
-        self.emulation_gps_array = []
-        self.emulation_index = 0
-
+    
     def on_start(self):
-        with open(data_file, 'r') as data_reader:
-            reader = csv.reader(data_reader)
-            next(reader)  # skip header
-            self.emulation_data_array = [int(row[2]) for row in csv.reader(data_reader)]
-
-        with open(gps_file, 'r') as data_reader:
-            reader = csv.reader(data_reader)
-            next(reader)  # skip header
-            self.emulation_gps_array = [[float(row[0]), float(row[1])] for row in csv.reader(data_reader)]
-        # once per 10ms
         Clock.schedule_interval(self.update, 1 / 100.0)
 
     def update(self, *args):
-        # --- Emulation ---
-        self.emulation_index += 1
-        if self.emulation_index < len(self.emulation_data_array):
-            self.data_array.append(self.emulation_data_array[self.emulation_index])
-            # should handle different data rates
-            gps_index = (self.emulation_index * len(self.emulation_gps_array)) / len(self.emulation_data_array)
-            self.gps_array.append(self.emulation_gps_array[int(gps_index)])
-        # --- End of emulation ---
+        if(len(self.gps_array) == 0):
+            return
+
         self.update_car_marker(self.gps_array[len(self.gps_array)-1])
-        if len(self.data_array) > 100:
+        if len(self.data_array) > 30:
             self.check_road_quality()
             self.data_array = []
             self.gps_array = []
@@ -65,7 +72,7 @@ class MapViewApp(App):
     def update_car_marker(self, point):
         if self.car_marker:
             self.car_marker.detach()
-
+        
         self.car_marker = MapMarker(lat=point[0], lon=point[1], source='images/car.png')
         self.mapview.add_marker(self.car_marker)
         self.mapview.center_on(point[0], point[1])
@@ -89,5 +96,13 @@ class MapViewApp(App):
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(MapViewApp().async_run(async_lib="asyncio"))
+    mapViewApp = MapViewApp()
+    # asyncio.run(connect_websocket(mapViewApp))
+    # Clock.schedule_interval(self.update, 1 / 100.0)
+    loop.run_until_complete(
+        asyncio.gather(
+            connect_websocket(mapViewApp),
+            mapViewApp.async_run(async_lib="asyncio")
+            )
+        )
     loop.close()
